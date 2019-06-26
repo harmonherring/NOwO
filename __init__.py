@@ -75,7 +75,11 @@ def check_space_exception(spaced_text, banned_word):
         new_phrase = banned_word[:i] + " " + banned_word[i:]
         print(new_phrase)
         if new_phrase in spaced_text:
-            return False
+            start_index = spaced_text.index(new_phrase)
+            end_index = start_index + len(new_phrase)
+            if spaced_text[start_index-1] != ' ' and spaced_text[start_index-1] != '' \
+                and spaced_text[end_index+1] != ' ' and spaced_text[end_index+1] != '':
+                return False
     return True
 
 
