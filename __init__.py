@@ -12,6 +12,7 @@ bot = commands.Bot(command_prefix='!')
 @bot.event
 async def on_message(message):
     # apparently commands dont fucking work???
+    # i'm lazy and will make this reasonable later (especially saving lmfao im a dumbass)
     if message.author.id == OWNER_ID:
         if message.content.startswith("$illegal"):
             illegal_phrase = message.content.split(" ")[1]
