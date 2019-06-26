@@ -60,30 +60,7 @@ async def on_message(message):
 
                     loop = asyncio.get_event_loop()
                     asyncio.run_coroutine_threadsafe(uwu_penalty(message), loop)
-
-
-
-
-class MyClient(discord.Client):
-    async def on_message(self, message):
-        print(message)
-        spaced_text = message.content.translate(str.maketrans('', '', string.punctuation)).lower()
-        text = spaced_text.replace(' ', '')
-        for word in ALLOWED_WORDS:
-            text = text.replace(word, '')
-        print(text)
-        for banned_word in DISALLOWED_WORDS:
-            if banned_word in text:
-                if check_space_exception(spaced_text, banned_word):
-                    member = message.author
-                    role = discord.utils.get(member.guild.roles, name="UwU Timeout")
-                    if role:
-                        await message.channel.send(
-                            "oopsies pwease dun use that wanguage hewe. now u have to sit in timeout"
-                        )
-
-                        loop = asyncio.get_event_loop()
-                        asyncio.run_coroutine_threadsafe(uwu_penalty(message), loop)
+                    return
 
 
 def check_space_exception(spaced_text, banned_word):
